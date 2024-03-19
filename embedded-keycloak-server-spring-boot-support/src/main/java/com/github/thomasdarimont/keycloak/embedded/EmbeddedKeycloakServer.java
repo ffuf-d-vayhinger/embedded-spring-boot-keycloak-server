@@ -19,12 +19,13 @@ public class EmbeddedKeycloakServer {
     public ApplicationListener<ApplicationReadyEvent> onApplicationReadyEventListener() {
 
         return (evt) -> {
+            Profile profile = Profile.getInstance();
 
-            log.infof("Using Keycloak Version: %s", Version.VERSION_KEYCLOAK);
-            log.infof("Enabled Keycloak Features (Deprecated): %s", Profile.getDeprecatedFeatures());
-            log.infof("Enabled Keycloak Features (Preview): %s", Profile.getPreviewFeatures());
-            log.infof("Enabled Keycloak Features (Experimental): %s", Profile.getExperimentalFeatures());
-            log.infof("Enabled Keycloak Features (Disabled): %s", Profile.getDisabledFeatures());
+            log.infof("Using Keycloak Version: %s", Version.VERSION);
+            log.infof("Enabled Keycloak Features (Deprecated): %s", profile.getDeprecatedFeatures());
+            log.infof("Enabled Keycloak Features (Preview): %s", profile.getPreviewFeatures());
+            log.infof("Enabled Keycloak Features (Experimental): %s", profile.getExperimentalFeatures());
+            log.infof("Enabled Keycloak Features (Disabled): %s", profile.getDisabledFeatures());
 
             Integer port = serverProperties.getPort();
 
