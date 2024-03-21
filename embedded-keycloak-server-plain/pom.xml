@@ -12,7 +12,7 @@
     <description>Embedded Keycloak Server Plain</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <start-class>com.github.thomasdarimont.keycloak.embedded.runner.Main</start-class>
     </properties>
 
