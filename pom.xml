@@ -25,12 +25,12 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <keycloak.version>23.0.7</keycloak.version>
-        <resteasy.version>4.7.7.Final</resteasy.version>
-        <infinispan.version>13.0.10.Final</infinispan.version>
-        <jgroups.version>4.2.20.Final</jgroups.version>
+        <keycloak.version>21.1.2</keycloak.version>
+        <resteasy.version>4.7.9.Final</resteasy.version>
+        <infinispan.version>14.0.9.Final</infinispan.version>
+        <jgroups.version>5.2.12.Final</jgroups.version>
         <smallrye-metrics.version>3.0.3</smallrye-metrics.version>
-        <liquibase.version>4.8.0</liquibase.version>
+        <liquibase.version>4.16.1</liquibase.version>
 
         <auto-service.version>1.0.1</auto-service.version>
 
@@ -238,9 +238,8 @@
 
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-js-adapter</artifactId>
+            <artifactId>keycloak-js-adapter-jar</artifactId>
             <version>${keycloak.version}</version>
-            <type>pom</type>
         </dependency>
 
         <dependency>

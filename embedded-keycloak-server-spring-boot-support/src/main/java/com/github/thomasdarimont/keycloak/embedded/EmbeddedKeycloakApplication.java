@@ -4,6 +4,7 @@ import com.github.thomasdarimont.keycloak.embedded.KeycloakCustomProperties.Admi
 import com.github.thomasdarimont.keycloak.embedded.support.SpringBootConfigProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.Config;
+import org.keycloak.common.Profile;
 import org.keycloak.exportimport.ExportImportConfig;
 import org.keycloak.exportimport.ExportImportManager;
 import org.keycloak.models.KeycloakSession;
@@ -27,6 +28,7 @@ public class EmbeddedKeycloakApplication extends KeycloakApplication {
     private final KeycloakCustomProperties customProperties;
 
     public EmbeddedKeycloakApplication(@Context ServletContext context) {
+        Profile.defaults();
         this.customProperties = WebApplicationContextUtils.getRequiredWebApplicationContext(context).getBean(KeycloakCustomProperties.class);
     }
 
