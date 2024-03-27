@@ -2,6 +2,7 @@ package com.github.thomasdarimont.keycloak.embedded;
 
 import com.github.thomasdarimont.keycloak.embedded.KeycloakCustomProperties.AdminUser;
 import com.github.thomasdarimont.keycloak.embedded.support.SpringBootConfigProvider;
+import jakarta.ws.rs.core.Context;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.Config;
 import org.keycloak.exportimport.ExportImportConfig;
@@ -15,8 +16,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.ServletContext;
-import javax.ws.rs.core.Context;
+import jakarta.servlet.ServletContext;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;

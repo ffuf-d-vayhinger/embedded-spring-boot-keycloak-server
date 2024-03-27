@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.infinispan.manager.DefaultCacheManager;
 import org.springframework.beans.BeanUtils;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.spi.InitialContextFactory;

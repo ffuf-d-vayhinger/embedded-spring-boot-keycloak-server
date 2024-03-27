@@ -4,6 +4,7 @@ import com.github.thomasdarimont.keycloak.embedded.support.DynamicJndiContextFac
 import com.github.thomasdarimont.keycloak.embedded.support.KeycloakUndertowRequestFilter;
 import com.github.thomasdarimont.keycloak.embedded.support.SpringBootConfigProvider;
 import com.github.thomasdarimont.keycloak.embedded.support.SpringBootPlatformProvider;
+import jakarta.servlet.Filter;
 import lombok.extern.slf4j.Slf4j;
 import org.infinispan.configuration.parsing.ConfigurationBuilderHolder;
 import org.infinispan.configuration.parsing.ParserRegistry;
@@ -14,13 +15,13 @@ import org.keycloak.platform.Platform;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
-import javax.servlet.Filter;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,6 +53,7 @@ public class EmbeddedKeycloakConfig {
 
     @Bean
     @ConditionalOnMissingBean(name = "springBeansJndiContextFactory")
+    @DependsOnDatabaseInitialization
     protected DynamicJndiContextFactoryBuilder springBeansJndiContextFactory(DataSource dataSource, DefaultCacheManager cacheManager, @Qualifier("fixedThreadPool") ExecutorService executorService) {
         return new DynamicJndiContextFactoryBuilder(dataSource, cacheManager, executorService);
     }
@@ -82,7 +84,7 @@ public class EmbeddedKeycloakConfig {
         initKeycloakEnvironmentFromProfiles();
 
         ServletRegistrationBean<HttpServlet30Dispatcher> servlet = new ServletRegistrationBean<>(new HttpServlet30Dispatcher());
-        servlet.addInitParameter("javax.ws.rs.Application", EmbeddedKeycloakApplication.class.getName());
+        servlet.addInitParameter("jakarta.ws.rs.Application", EmbeddedKeycloakApplication.class.getName());
 
         servlet.addInitParameter("resteasy.allowGzip", "false");
         servlet.addInitParameter("keycloak.embedded", "true");

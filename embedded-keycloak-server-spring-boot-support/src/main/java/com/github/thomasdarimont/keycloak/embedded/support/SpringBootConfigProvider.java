@@ -91,8 +91,7 @@ public class SpringBootConfigProvider implements Config.ConfigProvider {
             }
 
             // TODO find better way to parse config yaml into a list instead of a LinkedHashMap in the first place
-            if (obj instanceof LinkedHashMap) {
-                LinkedHashMap lm = (LinkedHashMap) obj;
+            if (obj instanceof LinkedHashMap lm) {
                 String[] strings = new String[lm.size()];
                 int i = 0;
                 for (Object entryValue : lm.values()) {

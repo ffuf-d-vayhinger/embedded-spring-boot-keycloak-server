@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.thomasdarimont.keycloak.embedded.starter.EmbeddedSpringKeycloakAutoConfiguration
