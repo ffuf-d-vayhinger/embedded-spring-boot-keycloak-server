@@ -26,11 +26,11 @@
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
         <keycloak.version>23.0.7</keycloak.version>
-        <resteasy.version>6.2.2.Final</resteasy.version>
-        <infinispan.version>13.0.10.Final</infinispan.version>
-        <jgroups.version>4.2.20.Final</jgroups.version>
+        <resteasy.version>6.2.8.Final</resteasy.version>
+        <infinispan.version>14.0.21.Final</infinispan.version>
+        <jgroups.version>5.3.4.Final</jgroups.version>
         <smallrye-metrics.version>3.0.3</smallrye-metrics.version>
-        <liquibase.version>4.8.0</liquibase.version>
+        <liquibase.version>4.16.1</liquibase.version>
 
         <auto-service.version>1.0.1</auto-service.version>
 
@@ -107,6 +107,13 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-multipart-provider</artifactId>
             <version>${resteasy.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jboss/jandex -->
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jandex</artifactId>
+            <version>3.1.6</version>
         </dependency>
 
         <dependency>
@@ -251,6 +258,18 @@
 
         <dependency>
             <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-rest-admin-ui-ext</artifactId>
+            <version>${keycloak.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
             <artifactId>keycloak-saml-core</artifactId>
             <version>${keycloak.version}</version>
             <exclusions>
@@ -320,6 +339,24 @@
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>10.0.0</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>1.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version> <!-- Adjust version as needed -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
 
     </dependencies>
@@ -434,6 +471,10 @@
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>maven2</id>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
     </repositories>
     <pluginRepositories>
